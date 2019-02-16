@@ -47,14 +47,38 @@
 				</button>
 				<div class="banner-slides">
 					<div class="banner-slide banner-slide-active">
-						slide1
-					</div>
-					<!--<div class="banner-slide">
-						slide2
+						<div class="banner-slide-img">
+							<img src="images/black_chair.png" alt="">
+						</div>
+						<div class="banner-slide-text">
+							<h2 class="banner-slide-title">Sit <span>on</span> our <span>chair1</span></h2>
+							<p class="banner-slide-content">Lorem ipsum1 dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+							<a class="btn banner-btn">Zobacz więcej</a>
+						</div>
 					</div>
 					<div class="banner-slide">
-						slide3
-					</div>-->
+						<div class="banner-slide-img">
+							<img src="images/black_chair.png" alt="">
+						</div>
+						<div class="banner-slide-text">
+							<h2 class="banner-slide-title">Sit <span>on</span> our <span>chair2</span></h2>
+							<p class="banner-slide-content">Lorem ipsum2 dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+							<a class="btn banner-btn">Zobacz więcej</a>
+						</div>
+					</div>
+					<div class="banner-slide">
+						<div class="banner-slide-img">
+							<img src="images/black_chair.png" alt="">
+						</div>
+						<div class="banner-slide-text">
+							<h2 class="banner-slide-title">Sit <span>on</span> our <span>chair3</span></h2>
+							<p class="banner-slide-content">Lorem ipsum3 dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+							<a class="btn banner-btn">Zobacz więcej</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -64,17 +88,17 @@
 			<div class="row">
 				<div class="col">
 					<div class="image-box">
-						<img class="product-image" src="images/box1_img.jpg">
+						<a href=""><img class="product-image" src="images/box1_img.jpg" alt=""></a>
 						<div class="product-name">
-							<h3 class="box-title">Chair <span>Clair</span></h3>
+							<a href=""><h3 class="box-title">Chair <span>Clair</span></h3></a>
 						</div>
 					</div>
 				</div>
 				<div class="col">
 					<div class="image-box">
-						<img class="product-image" src="images/box2_img.jpg">
+						<a href=""><img class="product-image" src="images/box2_img.jpg" alt=""></a>
 						<div class="product-name">
-							<h3 class="box-title">Chair <span>Margarita</span></h3>
+							<a href=""><h3 class="box-title">Chair <span>Margarita</span></h3></a>
 						</div>
 					</div>
 				</div>
@@ -171,7 +195,49 @@
 			</form>
 		</div>
 	</section>
+	<footer>
+		<div class="container">
+			<div class="footer">
+					<div class="footer-left">
+						Copyright 2019 | All rights reserved - Sit On Chair
+					</div>
+					<div class="footer-right">
+						<div class="footer-icons">
+							<a href=""><img src="images/flickr.png" alt=""></a>
+							<a href=""><img src="images/vimeo.png" alt=""></a>
+							<a href=""><img src="images/pinterest.png" alt=""></a>
+							<a href=""><img src="images/twitter.png" alt=""></a>
+						</div>
+						<div class="footer-name">
+							Sit <span>on</span> chair
 
+						</div>
+					</div>
+			</div>
+		</div>
+	</footer>
+<script>
+	var slides = document.querySelectorAll(".banner-slide");
+	var btnNext = document.querySelector(".banner-next");
+	var btnPrev = document.querySelector(".banner-prev");
+	var i = 0;
+	btnNext.addEventListener("click", function(){
+		slides[i].classList.remove("banner-slide-active");
+		i = ++i > slides.length-1 ? 0 : i;
+		//console.log(i);
+		slides[i].classList.add("banner-slide-active");
+
+	});
+	btnPrev.addEventListener("click", function(){
+		slides[i].classList.remove("banner-slide-active");
+		//i = slides.length-1;
+		i = --i >= 0 ? i : slides.length-1;
+		//console.log(i);
+		slides[i].classList.add("banner-slide-active");
+
+	})
+
+</script>
 
 
 </body>
