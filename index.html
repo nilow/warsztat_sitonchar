@@ -23,6 +23,7 @@
 							<li class="page-nav-sublist-el"><a href="" class="page-nav-sublist-link">Aktualności</a></li>
 							<li class="page-nav-sublist-el"><a href="" class="page-nav-sublist-link">Nasz team</a></li>
 							<li class="page-nav-sublist-el"><a href="" class="page-nav-sublist-link">Historia</a></li>
+
 						</ul>
 					</li>
 					<li class="page-nav-list-el">
@@ -30,6 +31,9 @@
 					</li>
 					<li class="page-nav-list-el">
 						<a href="" class="page-nav-list-link">Kontakt</a>
+					</li>
+					<li class="page-nav-list-el">
+						<a href="kalkulator/index.html" class="page-nav-list-link">Kalkulator</a>
 					</li>
 				</ul>
 			</nav>
@@ -59,7 +63,7 @@
 					</div>
 					<div class="banner-slide">
 						<div class="banner-slide-img">
-							<img src="images/black_chair.png" alt="">
+							<img src="images/orange_chair.png" alt="">
 						</div>
 						<div class="banner-slide-text">
 							<h2 class="banner-slide-title">Sit <span>on</span> our <span>chair2</span></h2>
@@ -68,17 +72,7 @@
 							<a class="btn banner-btn">Zobacz więcej</a>
 						</div>
 					</div>
-					<div class="banner-slide">
-						<div class="banner-slide-img">
-							<img src="images/black_chair.png" alt="">
-						</div>
-						<div class="banner-slide-text">
-							<h2 class="banner-slide-title">Sit <span>on</span> our <span>chair3</span></h2>
-							<p class="banner-slide-content">Lorem ipsum3 dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-							<a class="btn banner-btn">Zobacz więcej</a>
-						</div>
-					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -217,6 +211,7 @@
 		</div>
 	</footer>
 <script>
+	//slider
 	var slides = document.querySelectorAll(".banner-slide");
 	var btnNext = document.querySelector(".banner-next");
 	var btnPrev = document.querySelector(".banner-prev");
@@ -235,6 +230,18 @@
 		//console.log(i);
 		slides[i].classList.add("banner-slide-active");
 
+	})
+	//znikanie opisów
+	var productsboxes = document.querySelectorAll(".image-box");
+	productsboxes.forEach(function(el){
+		el.addEventListener("mouseover",function(){
+			var text = this.querySelector(".product-name");
+			text.classList.toggle("hidden");
+		});
+		el.addEventListener("mouseout",function(){
+			var text = this.querySelector(".product-name");
+			text.classList.toggle("hidden");
+		})
 	})
 
 </script>

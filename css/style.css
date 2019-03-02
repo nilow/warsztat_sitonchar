@@ -365,6 +365,7 @@ textarea.form-control{
 	position:relative;
 	width: 330px;
 }
+
 .product-name{
 	position: absolute;
 	bottom: 20px;
@@ -372,6 +373,10 @@ textarea.form-control{
 	width: 100%;
 	padding-left: 15px;
 }
+.hidden{
+	display: none;
+}
+
 .product-name a{
 	color: #fff;
 }

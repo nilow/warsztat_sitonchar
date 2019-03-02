@@ -1,0 +1,134 @@
+﻿ <!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="utf-8">
+    <title>Sit On Chair</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<section class="application ">
+    <div class="main_width">
+        <section class="choice_part inline">
+            <header>
+                <h3>SKOMPONUJ SWOJE KRZESŁO</h3>
+                <span class="green_bell"></span>
+            </header>
+
+            <div class="form">
+                <div class="drop_down_list" id="type">
+                    <span class="list_label">Wybierz rodzaj</span>
+                    <span class="list_arrow"></span>
+                    <ul class="list_panel">
+                        <li data-price="100">Clair</li>
+                        <li data-price="150">Margarita</li>
+                        <li data-price="200">Selena</li>
+                    </ul>
+                </div>
+                <div class="drop_down_list" id="color">
+                    <span class="list_label">Wybierz kolor</span>
+                    <span class="list_arrow"></span>
+                    <ul class="list_panel">
+                        <li data-price="0">Czerwony</li>
+                        <li data-price="10">Czarny</li>
+                        <li data-price="15">Pomarańczowy</li>
+                    </ul>
+                </div>
+                <div class="drop_down_list" id="pattern">
+                    <span class="list_label">Wybierz materiał</span>
+                    <span class="list_arrow"></span>
+                    <ul class="list_panel">
+                        <li data-price="40">Tkanina</li>
+                        <li data-price="80">Skóra</li>
+                    </ul>
+                </div>
+                <div class="checkbox check-box">
+                    <input type="checkbox" id="transport" data-transport-price="200">
+                    <label for="transport">Transport</label>
+                </div>
+                <!--<div class="checkbox"></div>-->
+                <!--<span class="list_label inline_text">Transport</span>-->
+            </div>
+        </section>
+
+        <section class="image_part inline">
+            <img src="images/red_chair.png">
+        </section>
+
+        <section class="summary_part inline">
+            <header class="align_right">
+                <h3>PODSUMOWANIE</h3>
+                <span class="green_bell"></span>
+            </header>
+
+            <div class="summary_panel">
+                <div class="panel_left">
+                    <h4 class="title" id="summary_type">Twój fotel</h4>
+                    <span class="color" id="summary_color"></span>
+                    <span class="pattern" id="summary_pattern"></span>
+                    <span class="transport" id="summary_transport"></span>
+                </div>
+                <div class="panel_right">
+                    <h4 class="title value" id="price_type"></h4>
+                    <span class="color value" id="price_color"></span>
+                    <span class="pattern value" id="price_pattern"></span>
+                    <span class="transport value" id="price_transport"></span>
+                </div>
+                <div class="sum_label">SUMA</div>
+                <div class="sum" ><strong id="total"></strong></div>
+            </div>
+            <a href="" class="green_button">Zamawiam</a>
+        </section>
+    </div>
+</section>
+<script>
+    var selects = document.querySelectorAll(".drop_down_list");
+    var values = document.querySelectorAll(".value");
+    var checkbox = document.getElementById("transport");
+
+    function totalPrice(){
+        var total = 0;
+        values.forEach(function(el){
+        var part_price = el.innerText ? parseInt(el.innerText) : 0;
+        total += part_price;                   
+        });
+        document.getElementById("total").innerText = total;
+    }
+
+    checkbox.addEventListener("change",function(){
+        var check_id = this.id;
+        var check_label = this.nextElementSibling.innerText;
+        document.getElementById("price_" + check_id).innerText = this.checked ? this.dataset.transportPrice : '';
+        document.getElementById("summary_" + check_id).innerText = this.checked ? check_label : '';
+       
+        totalPrice();
+        
+    });
+
+    selects.forEach(function(el, key){
+        el.addEventListener("click",function(){
+            var options_list = this.querySelector(".list_panel");
+            var options_items = this.querySelectorAll(".list_panel li");
+            var label = this.querySelector(".list_label");
+            var select_id = this.id;
+            //chowanie/pokazywanie listy
+            options_list.classList.toggle("visible");
+   
+            options_items.forEach(function(el){
+            el.addEventListener("click", function(){
+                document.getElementById("summary_" + select_id).innerText = this.innerText;
+                label.innerText = this.innerText;
+                document.getElementById("price_" + select_id).innerText = this.dataset.price;
+
+                totalPrice()
+                })
+            });     
+         
+        });
+       
+    })
+</script>
+	
+</body>
+</html>
